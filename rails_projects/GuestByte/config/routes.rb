@@ -1,4 +1,11 @@
 GuestByte::Application.routes.draw do
+  get "responses/create"
+  get "responses/delete"
+  get "static_pages/home"
+  resources 'events', only: [:new, :create, :show, :delete]
+  resources 'prompts', only: [:create, :delete]
+  resources 'responses', only: [:create, :delete]
+  root 'static_pages#home'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

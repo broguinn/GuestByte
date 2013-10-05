@@ -1,0 +1,18 @@
+<%= prompt.content %>
+
+<%= link_to "Respond", '#' %>
+<%= form_for @response ||= prompt.responses.new do |f| %>
+
+  <%= render 'shared/error_messages', object: f.object %>
+
+  <%= f.label 'Response' %>
+  <%= f.text_field :content %>
+  <%= f.hidden_field :prompt_id %>
+
+  <%= f.submit "Comment", class: "btn btn-large btn-primary" %>
+
+<% end %>
+
+<% prompt.responses.each do |response| %>
+  <%= response.content %>
+<% end %>
