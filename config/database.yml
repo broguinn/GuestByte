@@ -1,0 +1,8 @@
+development:
+  adapter: postgresql
+  database: GuestByte_development
+
+test:
+  adapter: postgresql
+  database: GuestByte_test
+
