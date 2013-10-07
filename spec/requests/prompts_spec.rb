@@ -12,15 +12,13 @@ feature 'Prompts' do
   end
 
   scenario 'A user creates a new prompt for the event' do
-    click_link "New prompt"
-    fill_in "Content", :with => 'How do you feel about foo?'
+    fill_in "prompt_content", :with => 'How do you feel about foo?'
     click_on "Create prompt"
     expect(page).to have_content 'How do you feel about foo?'
   end
 
   scenario 'A user creates a new prompt for the event' do
-    click_link "New prompt"
-    fill_in "Content", :with => ''
+    fill_in "prompt_content", :with => ''
     click_on 'Create prompt'
     expect(page).to have_content 'blank'
   end

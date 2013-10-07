@@ -1,3 +1,22 @@
-<h1> EventByte! </h1>
+<div class="jumbotron">
+  <h1>Welcome to GuestByte!</h1>
+  <p>This is a real-time event management and interaction system. Invite guests to comment, create, and interact! When the party's over, review their most memorable blurbs, and follow up with your guests with our email helper.</p>
+  <%= link_to 'New event', new_event_path %>
+</div>
 
-<%= link_to 'New event', new_event_path %>
+<div class="row">
+  <% if Event.all.empty? %>
+    <%= link_to 'Get started by making some events!', new_event_path %>
+  <% end %>
+  <% Event.all.each do |event| %>
+    <div class="col-6 col-sm-6 col-lg-4">
+      <h2><%= event.title %></h2>
+      <p>Hosted by: <%= event.host %></p>
+      <p><%= event.date %></p>
+      
+      <p>Eventually we will have an event with a description and it will be 'IGHT HERE</p>
+      <p><%= button_to "View Event &raquo;".html_safe, event, method: :get, class: 'btn btn-default'%></p>
+    </div><!--/span-->
+  <% end %>
+</div><!--/row-->
+

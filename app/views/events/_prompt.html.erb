@@ -1,18 +1,30 @@
-<%= prompt.content %>
+<div class="col-6 col-sm-6 col-lg-4">
+  <div class="prompt"
+    <h3><%= prompt.content %></h3>
+    
+    <div class="responses">
 
-<%= link_to "Respond", '#' %>
-<%= form_for @response ||= prompt.responses.new do |f| %>
+    <% prompt.responses_by_newest.each do |response| %>
+      <p><%= response.content %> <%= pluralize(response.age_in_minutes, 'minute') %> ago</p>
+    <% end %>
 
-  <%= render 'shared/error_messages', object: f.object %>
+    </div>
 
-  <%= f.label 'Response' %>
-  <%= f.text_field :content %>
-  <%= f.hidden_field :prompt_id %>
+    <%= form_for @response ||= prompt.responses.new do |f| %>
 
-  <%= f.submit "Comment", class: "btn btn-large btn-primary" %>
-<% end %>
+      <%= render 'shared/error_messages', object: f.object %>
+
+      <%= f.text_field :content, id: "content#{@response.id}" %>
+      <%= f.hidden_field :prompt_id, value: prompt.id %>
+
+      <%= f.submit "Comment", class: "btn btn-sm btn-primary" %>
+    <% end %>
+  </div>
+</div><!--/span-->
 
 
-<% prompt.responses.each do |response| %>
-  <p><%= response.content %></p>
-<% end %>
+
+
+
+
+

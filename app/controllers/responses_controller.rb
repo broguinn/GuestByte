@@ -1,6 +1,7 @@
 class ResponsesController < ApplicationController
   def create
     @response = Response.new(response_params)
+    @response.created_at = Time.now
     if @response.save
       redirect_to "/events/#{@response.prompt.event_id}/"
     else
