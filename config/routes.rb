@@ -1,4 +1,5 @@
 GuestByte::Application.routes.draw do
+  get "guests/create"
   get "responses/create"
   get "responses/delete"
   get "static_pages/home"
