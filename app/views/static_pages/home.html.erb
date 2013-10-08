@@ -10,12 +10,24 @@
   <% end %>
   <% Event.all.each do |event| %>
     <div class="col-6 col-sm-6 col-lg-4">
-      <h2><%= event.title %></h2>
-      <p>Hosted by: <%= event.host %></p>
-      <p><%= event.date %></p>
-      
-      <p>Eventually we will have an event with a description and it will be 'IGHT HERE</p>
-      <p><%= button_to "View Event &raquo;".html_safe, event, method: :get, class: 'btn btn-default'%></p>
+      <div class="prompt">
+        <h2><%= event.title %></h2>
+        <p>Hosted by: <%= event.host %></p>
+        <% if event.location %>
+          <p>Location: <%= event.location %></p>
+        <% end %>
+        <% if event.date %>
+          <p>Date: <%= event.date %></p>
+          <p><% if event.start_time %> 
+          From <%= event.start_time.strftime('%l:%M %P') %> 
+          <% end %>
+          <% if event.end_time %>
+          to <%= event.end_time.strftime('%l:%M %P') %>
+          <% end %></p>
+        <% end %>
+        <p><%= event.description ? event.description : "" %></p>
+        <p><%= button_to "View Event &raquo;".html_safe, event, method: :get, class: 'btn btn-default'%></p>
+      </div> 
     </div><!--/span-->
   <% end %>
 </div><!--/row-->

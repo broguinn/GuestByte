@@ -15,7 +15,7 @@
 
 <div class="row">
   <% if @event.prompts.empty? %>
-    <%= link_to 'Prompt please!', '#' %>
+    <p>Add a prompt to start the conversation!</p>
   <% end %>
   <% @event.prompts.each do |prompt| %>
     <%= render 'events/prompt', prompt: prompt %>
