@@ -1,25 +1,63 @@
-<h1><%= @event.title %></h1>
-<hr>
+<div class="row row-offcanvas row-offcanvas-right">
+  <div class="col-xs-12 col-sm-9">
+    <div class="row">
+      <div class="col-md-8">
+        <h1><%= @event.title %></h1>
+        <% if @event.host %>
+          <h3>Hosted by: <%= @event.host %></h3>
+        <% end %>
+        <% if @event.location %>
+          <h3>Location: <%= @event.location %></h3>
+        <% end %>
+        <% if @event.date %>
+          <h3>Date: <%= @event.date %></h3>
+        <% end %>  
+        <h3><% if @event.start_time %> 
+          From <%= @event.start_time.strftime('%l:%M %P') %> 
+        <% end %>
+        <% if @event.end_time %>
+          to <%= @event.end_time.strftime('%l:%M %P') %>
+        <% end %></h3>         
+      </div>  
+      <div class="col-md-4">
+        <% if @event.description %>
+          <h3><%= @event.description ? @event.description : "" %></h3>
+        <% end %>
+      </div>
+    </div>
+    
+    <hr>
 
-<h4>New Prompt</h4>
+    <h4>New Prompt</h4>               
+    <%= form_for @prompt ||= @event.prompts.new do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+      <%= f.text_field :content %>
+      <%= f.hidden_field :event_id %> 
+      <%= f.submit "Create prompt", class: "btn btn-large btn-primary" %>
+    <% end %>
 
-<%= form_for @prompt do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <%= f.text_field :content %>
-  <%= f.hidden_field :event_id %> 
+    <hr>
 
-  <%= f.submit "Create prompt", class: "btn btn-large btn-primary" %>
-<% end %>
+    <div class="row">
+      <% if @event.prompts.empty? %>
+        <p>Add a prompt to start the conversation!</p>
+      <% end %>
+      <% @event.prompts.each do |prompt| %>
+        <%= render 'events/prompt', prompt: prompt %>
+      <% end %>
+    </div><!--/row-->
+  </div>
 
-<hr>
-
-<div class="row">
-  <% if @event.prompts.empty? %>
-    <p>Add a prompt to start the conversation!</p>
-  <% end %>
-  <% @event.prompts.each do |prompt| %>
-    <%= render 'events/prompt', prompt: prompt %>
-  <% end %>
-</div><!--/row-->
+  <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+    <div class="well sidebar-nav">
+      <%= render 'events/guest_signin' %>
+      <h3>Guests in attendance</h3>
+      <% Guest.all.each do |guest| %>
+        <p><%= guest.name %></p>
+        <p class="indent">with <%= guest.affiliation %></p>
+      <% end %>
+    </div><!--/.well -->
+  </div>
+</div>
 
 

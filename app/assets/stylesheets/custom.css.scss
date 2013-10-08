@@ -3,11 +3,25 @@
   height: 200px;
 }
 
+.comment-form {
+  position: absolute;
+  bottom: 0;
+}
+
+.comment-time {
+  color: gray;
+}
+
+.indent {
+  margin-left: 10px;
+}
+
 .prompt {
   margin: 5px;
   padding: 5px;
   border: 1px solid #eeeeee;
   height: 350px;
+  position: relative;
 }
 
 .col-6 {
@@ -27,4 +41,9 @@
 
 body {
   word-wrap: break-word;
+}
+
+home-description {
+  overflow-y: auto;
+  height: 150px;
 }

@@ -12,20 +12,24 @@
     <div class="col-6 col-sm-6 col-lg-4">
       <div class="prompt">
         <h2><%= event.title %></h2>
-        <p>Hosted by: <%= event.host %></p>
+        <% if event.host %>
+          <p>Hosted by: <%= event.host %></p>
+        <% end %>
         <% if event.location %>
           <p>Location: <%= event.location %></p>
         <% end %>
         <% if event.date %>
           <p>Date: <%= event.date %></p>
-          <p><% if event.start_time %> 
+        <% end %>
+        <p><% if event.start_time %> 
           From <%= event.start_time.strftime('%l:%M %P') %> 
           <% end %>
           <% if event.end_time %>
           to <%= event.end_time.strftime('%l:%M %P') %>
-          <% end %></p>
+        <% end %></p>
+        <% if event.description %>
+          <p class="home-description"><%= event.description ? event.description : "" %></p>
         <% end %>
-        <p><%= event.description ? event.description : "" %></p>
         <p><%= button_to "View Event &raquo;".html_safe, event, method: :get, class: 'btn btn-default'%></p>
       </div> 
     </div><!--/span-->

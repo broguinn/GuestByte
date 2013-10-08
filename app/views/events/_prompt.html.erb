@@ -4,21 +4,23 @@
     
     <div class="responses">
 
-    <% prompt.responses_by_newest.each do |response| %>
-      <p><%= response.content %> <%= pluralize(response.age_in_minutes, 'minute') %> ago</p>
-    <% end %>
+      <% prompt.responses_by_newest.each do |response| %>
+        <p><%= response.content %></p> 
+        <p class="indent comment-time"><%= pluralize(response.age_in_minutes, 'minute') %> ago</p>
+      <% end %>
 
     </div>
+    <div class="comment-form">
+      <%= form_for @response ||= prompt.responses.new do |f| %>
 
-    <%= form_for @response ||= prompt.responses.new do |f| %>
+        <%= render 'shared/error_messages', object: f.object %>
 
-      <%= render 'shared/error_messages', object: f.object %>
+        <%= f.text_field :content, id: "content#{@response.id}" %>
+        <%= f.hidden_field :prompt_id, value: prompt.id %>
 
-      <%= f.text_field :content, id: "content#{@response.id}" %>
-      <%= f.hidden_field :prompt_id, value: prompt.id %>
-
-      <%= f.submit "Comment", class: "btn btn-sm btn-primary" %>
-    <% end %>
+        <%= f.submit "Comment", class: "btn btn-sm btn-primary" %>
+      <% end %>
+    </div>
   </div>
 </div><!--/span-->
 
