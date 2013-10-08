@@ -29,22 +29,16 @@ feature "Attendee guestbook" do
     find("input[placeholder='Name']").set ""
     fill_in "Affiliation", :with => ""
     click_on "Add me!"
-    save_and_open_page
     expect(page).to have_content("blank")
   end
 
-  scenario "lists out guests" do
-    before do
-      find("input[placeholder='Name']").set "Prospective Employer"
-      fill_in "Affiliation", :with => "Rich, fun company"
-      click_on "Add me!"
-      find("input[placeholder='Name']").set "Prospective Employer"
-      fill_in "Affiliation", :with => "Rich, fun company"
-      click_on "Add me!"
-    end
-            
-    scenario "it contains names and associations" do
-      expect(page).to contain('Prospective')  
-    end
+  scenario "lists out guests with names and associations" do
+    find("input[placeholder='Name']").set "Prospective Employer"
+    fill_in "Affiliation", :with => "Rich, fun company"
+    click_on "Add me!"
+    find("input[placeholder='Name']").set "Prospective Employer"
+    fill_in "Affiliation", :with => "Rich, fun company"
+    click_on "Add me!"
+    expect(page).to have_content('Prospective')  
   end
 end

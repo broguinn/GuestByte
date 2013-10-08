@@ -1,4 +1,5 @@
 GuestByte::Application.routes.draw do
+  post "headshot/capture" => 'headshot#capture', :as => :headshot_capture
   get "guests/create"
   get "responses/create"
   get "responses/delete"

@@ -64,6 +64,7 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
+    headshot (0.1.6)
     hike (1.2.3)
     i18n (0.6.5)
     jbuilder (1.5.1)
@@ -168,6 +169,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   factory_girl_rails
+  headshot
   jbuilder (~> 1.2)
   jquery-rails
   launchy
