@@ -1,0 +1,13 @@
+<%= headshot_default_config(Rails.application.config.session_options[:key], headshot_capture_path) %>
+
+    <div class="camera">
+      <%= headshot_camera(width = 190, height = 166.25) %>
+    </div>
+      
+    <br/><br/>
+   
+
+    <%= headshot_snap_button('Shoot') %>
+
+   
+

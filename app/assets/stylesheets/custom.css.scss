@@ -1,6 +1,14 @@
+body {
+  background-image: url('../assets/grid.png');
+}
+
 .responses {
   overflow-y: auto;
   height: 200px;
+}
+
+a {
+  color: #3489BF;
 }
 
 .comment-form {
@@ -10,6 +18,11 @@
 
 .comment-time {
   color: gray;
+}
+
+.event-button {
+  position: absolute;
+  bottom: 5px;
 }
 
 .indent {
@@ -22,6 +35,10 @@
   border: 1px solid #eeeeee;
   height: 350px;
   position: relative;
+}
+
+.camera {
+  margin-top: 20px;
 }
 
 .col-6 {
@@ -37,6 +54,14 @@
 .col-lg-4 {
   padding-top: 15px;
   padding-bottom: 15px; 
+}
+
+.sidebar-nav {
+  background-color: #ffffff;
+}
+
+embed {
+  background-color: #f5f5f5;
 }
 
 body {

@@ -1,14 +1,17 @@
 GuestByte::Application.routes.draw do
-  post "headshot/capture" => 'headshot#capture', :as => :headshot_capture
   get "guests/create"
   get "responses/create"
   get "responses/delete"
   get "static_pages/home"
+  get "static_pages/photo"
   resources 'events', only: [:new, :create, :show]
   resources 'guests', only: [:create]
   resources 'prompts', only: [:create]
   resources 'responses', only: [:create]
   root 'static_pages#home'
+  resources :photos, :only => [:index, :show, :new, :create] do
+    post 'upload', :on => :collection
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

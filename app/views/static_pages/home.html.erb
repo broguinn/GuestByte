@@ -30,7 +30,7 @@
         <% if event.description %>
           <p class="home-description"><%= event.description ? event.description : "" %></p>
         <% end %>
-        <p><%= button_to "View Event &raquo;".html_safe, event, method: :get, class: 'btn btn-default'%></p>
+        <p class><%= button_to "View Event &raquo;".html_safe, event, method: :get, class: 'btn btn-default btn-primary event-button'%></p>
       </div> 
     </div><!--/span-->
   <% end %>
