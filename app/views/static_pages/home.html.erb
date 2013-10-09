@@ -1,38 +1,8 @@
 <div class="jumbotron">
   <h1>Welcome to GuestByte!</h1>
   <p>This is a real-time event management and interaction system. Invite guests to comment, create, and interact! When the party's over, review their most memorable blurbs, and follow up with your guests with our email helper.</p>
-  <%= link_to 'New event', new_event_path %>
+  <%= link_to 'Get started!', '#' %>
 </div>
 
-<div class="row">
-  <% if Event.all.empty? %>
-    <%= link_to 'Get started by making some events!', new_event_path %>
-  <% end %>
-  <% Event.all.each do |event| %>
-    <div class="col-6 col-sm-6 col-lg-4">
-      <div class="prompt">
-        <h2><%= event.title %></h2>
-        <% if event.host %>
-          <p>Hosted by: <%= event.host %></p>
-        <% end %>
-        <% if event.location %>
-          <p>Location: <%= event.location %></p>
-        <% end %>
-        <% if event.date %>
-          <p>Date: <%= event.date %></p>
-        <% end %>
-        <p><% if event.start_time %> 
-          From <%= event.start_time.strftime('%l:%M %P') %> 
-          <% end %>
-          <% if event.end_time %>
-          to <%= event.end_time.strftime('%l:%M %P') %>
-        <% end %></p>
-        <% if event.description %>
-          <p class="home-description"><%= event.description ? event.description : "" %></p>
-        <% end %>
-        <p><%= button_to "View Event &raquo;".html_safe, event, method: :get, class: 'btn btn-default'%></p>
-      </div> 
-    </div><!--/span-->
-  <% end %>
-</div><!--/row-->
+
 

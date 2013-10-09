@@ -1,0 +1,36 @@
+<div>
+  <%= link_to 'New event', new_event_path %>
+</div>
+<div class="row">
+  <% if Event.all.empty? %>
+    <%= link_to 'Get started by making some events!', new_event_path %>
+  <% end %>
+  <% Event.all.each do |event| %>
+    <div class="col-6 col-sm-6 col-lg-4">
+      <div class="prompt">
+        <h2><%= event.title %></h2>
+        <% if event.host %>
+          <p>Hosted by: <%= event.host %></p>
+        <% end %>
+        <% if event.location %>
+          <p>Location: <%= event.location %></p>
+        <% end %>
+        <% if event.date %>
+          <p>Date: <%= event.date %></p>
+        <% end %>
+        <p><% if event.start_time %> 
+          From <%= event.start_time.strftime('%l:%M %P') %> 
+          <% end %>
+          <% if event.end_time %>
+          to <%= event.end_time.strftime('%l:%M %P') %>
+        <% end %></p>
+        <% if event.description %>
+          <p class="home-description"><%= event.description ? event.description : "" %></p>
+        <% end %>
+        <div class="event-button">
+          <p><%= button_to "View Event &raquo;".html_safe, event, method: :get, class: 'btn btn-default'%></p>
+        </div>
+      </div> 
+    </div><!--/span-->
+  <% end %>
+</div><!--/row-->

@@ -4,7 +4,9 @@ GuestByte::Application.routes.draw do
   get "responses/create"
   get "responses/delete"
   get "static_pages/home"
-  resources 'events', only: [:new, :create, :show]
+  get "static_pages/about"
+  get "static_pages/contact"
+  resources 'events', only: [:new, :index, :create, :show]
   resources 'guests', only: [:create]
   resources 'prompts', only: [:create]
   resources 'responses', only: [:create]
