@@ -52,10 +52,11 @@
     <div class="well sidebar-nav">
       <%= render 'events/guest_signin' %>
       <h3>Guests in attendance</h3>
-      <% Guest.all.each do |guest| %>
-        <p><%= guest.name %></p>
-        <p class="indent">with <%= guest.affiliation %></p>
-      <% end %>
+      <div class="row">
+        <% Guest.all.each do |guest| %>
+          <p><%= guest.name %> with <%= guest.affiliation %></p>
+        <% end %>
+      </div>
     </div><!--/.well -->
   </div>
 </div>

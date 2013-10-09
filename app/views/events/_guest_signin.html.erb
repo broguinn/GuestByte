@@ -1,14 +1,28 @@
 <div class="sign-in-form">
 
-  <%= form_for @guest ||= @event.guests.new do |f| %>
+  <%= form_for(@guest ||= @event.guests.new, 
+               url: guests_path, 
+               html: { multipart: true }) do |f| %>
  
     <%= render 'shared/error_messages', object: f.object %>
     <%= f.text_field :name, :placeholder => "Name" %>
-    <%= f.text_field :affiliation, :placeholder => "Affiliation" %>
+    <%= f.text_field :affiliation, :placeholder => "Affiliation" %>    
     <%= f.text_field :email, :placeholder => "Email (optional)" %>
     <%= f.hidden_field :event_id %>
+    <%= f.file_field :avatar %>
 
     <%= f.submit "Add me!", class: "btn btn-sm btn-primary" %>
   <% end %>
+  <div id="webcam">
+    <script type="text/javascript">
+      webcam.set_swf_url('/webcam.swf');
+      webcam.set_api_url('<%= upload_photos_path %>');
+      webcam.set_quality(90);
+      webcam.set_shutter_sound(true, '/shutter.mp3');
+      $('#webcam').innerHTML = webcam.get_html(640, 480);
+    </script>
+  </div>
+
+  <input type="button" value="Take picture" onclick="webcam.snap();" />
 </div>
 

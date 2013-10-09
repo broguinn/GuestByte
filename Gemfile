@@ -8,8 +8,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 gem 'bootstrap-sass', :git => 'https://github.com/thomas-mcdonald/bootstrap-sass'
-gem 'headshot', :path => "vendor/gems/headshot"
-gem "paperclip", "~> 3.0"
+gem "paperclip", "~> 3.5.0"
 
 group :doc do
   gem 'sdoc', require: false

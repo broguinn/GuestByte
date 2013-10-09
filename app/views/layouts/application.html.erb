@@ -4,12 +4,16 @@
     <title>GuestByte</title>
     <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag 'webcam' %>
     <%= csrf_meta_tags %>
+
   </head>
 
   <body>
     <%= render '/shared/navbar' %>
-
+    <% flash.each do |key, value| %>
+      <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+    <% end %>
     <div class="container">  
       <p class="pull-right visible-xs">
         <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
@@ -17,9 +21,7 @@
 
       <%= yield %>
 
-      <% flash.each do |key, value| %>
-        <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-      <% end %>
+      
 
       <hr>
 

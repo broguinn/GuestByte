@@ -5,11 +5,6 @@ GIT
     bootstrap-sass (3.0.0.0)
       sass (~> 3.2)
 
-PATH
-  remote: vendor/gems/headshot
-  specs:
-    headshot (0.1.6)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -186,11 +181,10 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   factory_girl_rails
-  headshot!
   jbuilder (~> 1.2)
   jquery-rails
   launchy
-  paperclip (~> 3.0)
+  paperclip (~> 3.5.0)
   pg
   pry
   rails (= 4.0.0)
