@@ -2,8 +2,7 @@ require 'spec_helper'
 
 feature "Response" do
   before do
-    visit root_path
-    click_link "New event"
+    visit new_event_path
     fill_in "Title", :with => "Friday Drinks"
     select("2014", :from => "event_date_1i")
     select("10", :from => "event_date_2i")

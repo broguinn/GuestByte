@@ -1,4 +1,5 @@
 GuestByte::Application.routes.draw do
+  devise_for :users
   post "headshot/capture" => 'headshot#capture', :as => :headshot_capture
   get "guests/create"
   get "responses/create"
@@ -6,7 +7,10 @@ GuestByte::Application.routes.draw do
   get "static_pages/home"
   get "static_pages/about"
   get "static_pages/contact"
-  resources 'events', only: [:new, :index, :create, :show]
+  resources 'users', only: [:show] do
+    resources :events
+  end
+  resources 'events', only: [:new, :index, :create, :show, :destroy]
   resources 'guests', only: [:create]
   resources 'prompts', only: [:create]
   resources 'responses', only: [:create]

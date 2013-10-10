@@ -1,12 +1,12 @@
 <div class="sign-in-form">
 
-  <%= form_for @guest ||= @event.guests.new do |f| %>
+  <%= form_for @guest ||= Guest.new do |f| %>
  
     <%= render 'shared/error_messages', object: f.object %>
     <%= f.text_field :name, :placeholder => "Name" %>
     <%= f.text_field :affiliation, :placeholder => "Affiliation" %>
     <%= f.text_field :email, :placeholder => "Email (optional)" %>
-    <%= f.hidden_field :event_id %>
+    <%= f.hidden_field :event_id, value: @event.id %>
 
     <%= f.submit "Add me!", class: "btn btn-sm btn-primary" %>
   <% end %>
