@@ -7,8 +7,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
-gem 'bootstrap-sass', :git => 'https://github.com/thomas-mcdonald/bootstrap-sass'
+# gem 'bootstrap-sass', :git => 'https://github.com/thomas-mcdonald/bootstrap-sass'
 gem 'devise'
+gem 'protected_attributes'
+gem 'headshot'
 
 group :doc do
   gem 'sdoc', require: false

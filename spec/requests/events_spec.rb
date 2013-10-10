@@ -1,6 +1,16 @@
 require 'spec_helper'
 
 feature "New event" do
+  before do
+    visit root_path
+    click_link "Get started!"
+    fill_in "Name", :with => "Party Girl"
+    fill_in "Email", :with => "parkerposey@party.com"
+    fill_in "Password", :with => "partygirl"
+    fill_in "Password confirmation", :with => "partygirl"
+    click_on "Sign up"
+  end
+
   scenario "a user successfully creates a new event" do
     visit new_event_path
     fill_in "Title", :with => "Friday Drinks"

@@ -2,6 +2,13 @@ require 'spec_helper'
 
 feature "Response" do
   before do
+    visit root_path
+    click_link "Get started!"
+    fill_in "Name", :with => "Party Girl"
+    fill_in "Email", :with => "parkerposey@party.com"
+    fill_in "Password", :with => "partygirl"
+    fill_in "Password confirmation", :with => "partygirl"
+    click_on "Sign up"
     visit new_event_path
     fill_in "Title", :with => "Friday Drinks"
     select("2014", :from => "event_date_1i")

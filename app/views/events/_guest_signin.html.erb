@@ -1,5 +1,4 @@
 <div class="sign-in-form">
-
   <%= form_for @guest ||= Guest.new do |f| %>
  
     <%= render 'shared/error_messages', object: f.object %>
@@ -8,7 +7,7 @@
     <%= f.text_field :email, :placeholder => "Email (optional)" %>
     <%= f.hidden_field :event_id, value: @event.id %>
 
-    <%= f.submit "Add me!", class: "btn btn-sm btn-primary" %>
+    <%= f.submit "Add me!", class: "btn btn-sm btn-warning" %>
   <% end %>
 </div>
 

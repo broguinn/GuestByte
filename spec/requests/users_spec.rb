@@ -27,7 +27,7 @@ feature 'Add users' do
   end
 
   scenario "when users are not signed in they cannot access My Events" do
-    visit user_event_path
+    visit user_events_path(1)
     expect(page).to have_content("You need to sign in or sign up before continuing.")
   end
 

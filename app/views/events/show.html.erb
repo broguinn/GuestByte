@@ -28,12 +28,12 @@
     
     <hr>
 
-    <h4>New Prompt</h4>               
+    <h4>Start the conversation!</h4>               
     <%= form_for @prompt ||= @event.prompts.new do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
       <%= f.text_field :content %>
       <%= f.hidden_field :event_id %> 
-      <%= f.submit "Create prompt", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Create prompt", class: "btn btn-large btn-warning" %>
     <% end %>
 
     <hr>
@@ -50,7 +50,11 @@
 
   <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
     <div class="well sidebar-nav">
+      <h2>Guest Book</h2>
+      <hr>
+      <h3>Sign your name</h3>
       <%= render 'events/guest_signin' %>
+      <hr>
       <h3>Guests in attendance</h3>
       <% @event.guests.each do |guest| %>
         <p><%= guest.name %></p>

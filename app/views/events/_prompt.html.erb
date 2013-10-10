@@ -1,4 +1,4 @@
-<div class="col-6 col-sm-6 col-lg-4">
+<div class="col-6 col-sm-6 col-lg-6">
   <div class="prompt">
     <h3><%= prompt.content %></h3>
     
@@ -11,14 +11,19 @@
 
     </div>
     <div class="comment-form">
+
       <%= form_for @response ||= prompt.responses.new do |f| %>
 
         <%= render 'shared/error_messages', object: f.object %>
 
-        <%= f.text_field :content, id: "content#{@response.id}" %>
+        
         <%= f.hidden_field :prompt_id, value: prompt.id %>
 
-        <%= f.submit "Comment", class: "btn btn-sm btn-primary" %>
+        <div class="col-lg-offset-2 col-lg-10" id="comment-button">
+          <%= f.text_area :content, id: "content#{@response.id}" %>
+          <%= f.submit "Comment", class: "btn btn-sm btn-primary" %>
+        </div>
+      
       <% end %>
     </div>
   </div>
